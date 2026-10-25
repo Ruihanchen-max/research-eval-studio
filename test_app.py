@@ -20,7 +20,9 @@ def test_app_renders_synthetic_demo_and_public_demo_notice():
 
 
 def test_streamlit_upload_config_matches_application_limit():
-    config_path = Path(__file__).parents[1] / ".streamlit" / "config.toml"
+    test_path = Path(__file__).resolve()
+    repo_root = test_path.parent.parent if test_path.parent.name == "tests" else test_path.parent
+    config_path = repo_root / ".streamlit" / "config.toml"
     config = tomllib.loads(config_path.read_text(encoding="utf-8"))
 
     assert config["server"]["maxUploadSize"] == MAX_UPLOAD_SIZE_MB
