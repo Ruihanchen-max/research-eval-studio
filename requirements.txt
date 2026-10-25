@@ -1,0 +1,2 @@
+# One pinned dependency set for local use, CI, and the deployment entry point.
+-r requirements-py312.lock
